@@ -162,29 +162,29 @@ $ sudo chmod 0644 /etc/logrotate.d/invidious.logrotate
 
 ```bash
 # Install dependencies
-$ brew update
-$ brew install shards crystal postgres imagemagick librsvg
+brew update
+brew install shards crystal postgres imagemagick librsvg
 
 # Clone the repository and set up a PostgreSQL database
-$ git clone https://github.com/iv-org/invidious
-$ cd invidious
-$ brew services start postgresql
-$ psql -c "CREATE ROLE kemal WITH PASSWORD 'kemal';" # Change 'kemal' here to a stronger password, and update `password` in config/config.yml
-$ createdb -O kemal invidious
-$ psql invidious kemal < config/sql/channels.sql
-$ psql invidious kemal < config/sql/videos.sql
-$ psql invidious kemal < config/sql/channel_videos.sql
-$ psql invidious kemal < config/sql/users.sql
-$ psql invidious kemal < config/sql/session_ids.sql
-$ psql invidious kemal < config/sql/nonces.sql
-$ psql invidious kemal < config/sql/annotations.sql
-$ psql invidious kemal < config/sql/privacy.sql
-$ psql invidious kemal < config/sql/playlists.sql
-$ psql invidious kemal < config/sql/playlist_videos.sql
+git clone https://github.com/iv-org/invidious
+cd invidious
+brew services start postgresql
+psql -c "CREATE ROLE kemal WITH PASSWORD 'kemal';" # Change 'kemal' here to a stronger password, and update `password` in config/config.yml
+createdb -O kemal invidious
+psql invidious kemal < config/sql/channels.sql
+psql invidious kemal < config/sql/videos.sql
+psql invidious kemal < config/sql/channel_videos.sql
+psql invidious kemal < config/sql/users.sql
+psql invidious kemal < config/sql/session_ids.sql
+psql invidious kemal < config/sql/nonces.sql
+psql invidious kemal < config/sql/annotations.sql
+psql invidious kemal < config/sql/privacy.sql
+psql invidious kemal < config/sql/playlists.sql
+psql invidious kemal < config/sql/playlist_videos.sql
 
 # Set up Invidious
-$ shards update && shards install
-$ crystal build src/invidious.cr --release
+shards update && shards install
+crystal build src/invidious.cr --release
 ```
 
 ## Update Invidious
